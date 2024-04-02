@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+    <h1>Daytrading minmaxxer</h1>
+    <p>predicts prices of specified stocks on a specified date!!!</p>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name }}
+        </p>
+        <p>
+            {{ form.price.label }}<br>
+            {{ form.price }}
+        </p>
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% if data_entered %}
+    <p>Din mor!!!!</p>
+    {% endif %}
+{% endblock %}
