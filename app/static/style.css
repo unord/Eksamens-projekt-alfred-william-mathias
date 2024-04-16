@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#form-res {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    border: thin solid black;
+}
+
+.item {
+    border: thin solid black;
+    width: 35%;
+    text-align: center;
+}
+
+.itemcontent {
+    text-align: left;
+    width: fit-content;
+    margin: auto;
+}
