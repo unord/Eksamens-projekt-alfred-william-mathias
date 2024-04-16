@@ -1,4 +1,4 @@
-from flask import render_template, redirect
+from flask import render_template, redirect, session, url_for
 from app import app
 from app.forms import DataInput
 
@@ -6,8 +6,17 @@ from app.forms import DataInput
 @app.route('/index', methods=["GET", "POST"])
 def index():
     form = DataInput()
-    data_entered = False
+    data = ""
     if form.validate_on_submit():
-        data_entered = True
-        return redirect("/index")
-    return render_template("index.html", title="Daytrading minmaxxer", form=form, data_entered=data_entered)
+        data = {
+            "brand": form.brand.data,
+            "model": form.model.data,
+            "engine": form.engine.data,
+            "year": form.y.data,
+            "km": form.km.data,
+            "gear": form.gear.data,
+            "fuel": form.fuel.data,
+            "fe": form.fe.data
+        }
+        redirect("/")
+    return render_template("index.html", title="Used car pricepicker", form=form, data=data)

@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% block content %}
-    <h1>Daytrading minmaxxer</h1>
-    <p>predicts prices of specified stocks on a specified date!!!</p>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.name.label }}<br>
-            {{ form.name }}
-        </p>
-        <p>
-            {{ form.price.label }}<br>
-            {{ form.price }}
-        </p>
-        <p>
-            {{ form.date.label }}<br>
-            {{ form.date }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <div style="text-align: center;">
+        <h1>Used car pricepicker</h1>
+        <p>Recomends a price for YOUR used car!!!</p>
+    </div>
+    <div id="form-res">
+        <div class="item">
+            <form action="" method="post" novalidate class="itemcontent">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.brand }}
+                </p>
+                <p>
+                    {{ form.model.label }}<br>
+                    {{ form.model }}
+                </p>
+                <p>
+                    {{ form.engine.label }}<br>
+                    {{ form.engine }}
+                </p>
+                <p>
+                    {{ form.y.label }}<br>
+                    {{ form.y }}
+                </p>
+                <p>
+                    {{ form.km.label }}<br>
+                    {{ form.km }}
+                </p>
+                <p>
+                    {{ form.gear.label }}<br>
+                    {{ form.gear }}
+                </p>
+                <p>
+                    {{ form.fuel.label }}<br>
+                    {{ form.fuel }}
+                </p>
+                <p>
+                    {{ form.fe.label }}<br>
+                    {{ form.fe }}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+        <div class="item">
+            <div class="itemcontent">
+                 {% if data %}
+                    <ul>
+                        {% for key, value in data.items() %}
+                            <li>{{ key }}: {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h1>din mor</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     {% if data_entered %}
-    <p>Din mor!!!!</p>
+    <p>{{ data_entered }}</p>
     {% endif %}
 {% endblock %}
