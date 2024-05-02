@@ -23,7 +23,6 @@ def datasaml(brand):
                     engine = 'python')
     
     dfsaml = pd.concat([dfsaml, dfmerge])
-    
 
 for x in brand:
     datasaml(x)
