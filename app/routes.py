@@ -19,6 +19,6 @@ def index():
         pred_data = {col: [data] for col, data in zip(form.data.keys(), [data if isinstance(data, str) else float(data) for data in form.data.values()])}
         pred_data = pd.DataFrame(pred_data)
         pred_data = preprocessor.transform(pred_data)
-        pred_price = round(model.predict(pred_data)[0])
+        pred_price = abs(round(model.predict(pred_data)[0]))
         redirect("/")
     return render_template("index.html", title="Used car pricepicker", form=form, price=pred_price)
