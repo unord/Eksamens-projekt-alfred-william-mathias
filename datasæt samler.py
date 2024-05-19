@@ -10,8 +10,7 @@ brands_df = []
 def kollonne_tilføjer(brand):
     # Indslæser filen med et specifikt "brand" af biler ind i et dataframe 
     df = pd.read_csv(f"data/{brand}.csv", sep = ";", engine = "python")
-    word_to_add = brand # Definere det ord der skal tilføjes til filen som "brand"
-    df["brand"] = word_to_add # Tilføjer en kolone til .csv filen med titlen "brand" og indholdet "word_to_add"
+    df["brand"] = brand # Tilføjer en kolone til .csv filen med titlen "brand" og indholdet funktions argumentet "brand"
 
     # gemmer den nye dataframe i listen
     brands_df.append(df)
@@ -20,20 +19,19 @@ def kollonne_tilføjer(brand):
 for x in brand:
     kollonne_tilføjer(x)
 
-# Definere de koloner vi vil gemme i et samlet datasæt
-columns = ["model", "year", "price", "transmission", "mileage", "fuelType", "tax", "mpg", "engineSize", "brand"]
 dfsaml = pd.DataFrame() # Opretter et pandas dataframe 
 
 # Opretter en funktion til at samle datasætten til et datasæt
 def datasaml(dfmerge):
     global dfsaml 
-    # Indlæser et datasæt ind i et pandas dataframe
     # Samler begge dataframes til et samlet dataframe 
     dfsaml = pd.concat([dfsaml, dfmerge])
 
 # Kører funktionen "datasaml" for alle elementer i "brands"
 for df in brands_df:
     datasaml(df)
+# Definere de koloner vi vil gemme i et samlet datasæt
+columns = ["model", "year", "price", "transmission", "mileage", "fuelType", "tax", "mpg", "engineSize", "brand"]
 # Udvælger de koloner med det data vi vil have i vores samlede datasæt
 dfsaml=dfsaml[columns]
 # Gemmer det samlede dataframe som en .csv fil
