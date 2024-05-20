@@ -18,17 +18,10 @@ def kollonne_tilføjer(brand):
 # Køre funktionen "kollonne_tilføjer" for alle elementer i listen "brand" sådan at vi gemmer brandet med i dataframet    
 for x in brand:
     kollonne_tilføjer(x)
-dfsaml = pd.DataFrame() # Opretter et pandas dataframe 
 
-# Opretter en funktion til at samle datasætten til et datasæt
-def datasaml(dfmerge):
-    global dfsaml 
-    # Samler begge dataframes til et samlet dataframe 
-    dfsaml = pd.concat([dfsaml, dfmerge])
+# samler dataframesne i et
+dfsaml = pd.concat(brands_df) # Opretter et pandas dataframe 
 
-# Kører funktionen "datasaml" for alle elementer i "brands"
-for df in brands_df:
-    datasaml(df)
 # Definere de koloner vi vil gemme i et samlet datasæt
 columns = ["model", "year", "price", "transmission", "mileage", "fuelType", "tax", "mpg", "engineSize", "brand"]
 # Udvælger de koloner med det data vi vil have i vores samlede datasæt
